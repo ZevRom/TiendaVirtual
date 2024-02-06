@@ -8,17 +8,39 @@ class Home extends Controllers
 
     public function home($params)
     {
-        //echo "Mensaje desde el controlador";
+        $data['tag_page'] = "Home";
+        $data['page_title'] = "Página Principal";
+        $data['page_name'] = "Home";
+        $this->views->getView($this, "home", $data);
     }
 
-    public function datos($params)
+    public function insertar()
     {
-        echo "Dato recibido: " . $params;
+        $data = $this->model->setUser("Sors", 27);
+        print_r($data);
     }
 
-    public function carrito($params)
+    public function verusuario($id)
     {
-        $carrito = $this->model->getCarrito($params);
-        echo $carrito;
+        $data = $this->model->getUser($id);
+        print_r($data);
+    }
+
+    public function actualizar()
+    {
+        $data = $this->model->updateuser(1, "Diego", 27);
+        print_r($data);
+    }
+
+    public function verusuarios()
+    {
+        $data = $this->model->getUsers();
+        print_r($data);
+    }
+
+    public function eliminarusuario($id)
+    {
+        $data = $this->model->delUser($id);
+        print_r($data);
     }
 }
